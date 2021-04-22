@@ -31,8 +31,8 @@ async function run(): Promise<void> {
         head = context.payload.pull_request?.head?.sha
         break
       case 'pull_request_target':
-        base = context.payload.pull_request_target?.base?.sha
-        head = context.payload.pull_request_target?.head?.sha
+        base = process.env.BASE_SHA
+        head = process.env.HEAD_SHA
         break
       case 'push':
         base = context.payload.before
