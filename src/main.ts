@@ -28,23 +28,16 @@ async function run(): Promise<void> {
     core.info(`${context.payload}`)
 
     switch (eventName) {
+      case 'pull_request_target':
       case 'pull_request':
         base = context.payload.pull_request?.base?.sha
         head = context.payload.pull_request?.head?.sha
-        break
-      case 'pull_request_target':
-        core.info(`${context.payload}`)
-        base = context.payload.pull_request?.base?.sha
-        head = context.payload.pull_request?.base?.sha
         break
       case 'push':
         base = context.payload.before
         head = context.payload.after
         break
       default:
-        // Log the base and head commits
-        core.info(`Base commit: ${base}`)
-        core.info(`Head commit: ${head}`)
         core.setFailed(
           `This action only supports pull requests and pushes, ${context.eventName} events are not supported. ` +
             "Please submit an issue on this action's GitHub repo if you believe this in correct."
