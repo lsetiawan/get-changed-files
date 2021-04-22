@@ -24,6 +24,8 @@ async function run(): Promise<void> {
     // Define the base and head commits to be extracted from the payload.
     let base: string | undefined
     let head: string | undefined
+    
+    core.info(`${context.payload}`)
 
     switch (eventName) {
       case 'pull_request':
@@ -39,6 +41,9 @@ async function run(): Promise<void> {
         head = context.payload.after
         break
       default:
+        // Log the base and head commits
+        core.info(`Base commit: ${base}`)
+        core.info(`Head commit: ${head}`)
         core.setFailed(
           `This action only supports pull requests and pushes, ${context.eventName} events are not supported. ` +
             "Please submit an issue on this action's GitHub repo if you believe this in correct."
