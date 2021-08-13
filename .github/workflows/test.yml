@@ -6,6 +6,7 @@ on:
     branches:
       - master
       - releases/*
+      - pr_target
 
 jobs:
   debug:
@@ -94,3 +95,4 @@ jobs:
           echo 'steps.files.outputs.removed=${{ steps.files.outputs.removed }}'
           echo 'steps.files.outputs.renamed=${{ steps.files.outputs.renamed }}'
           echo 'steps.files.outputs.added_modified=${{ steps.files.outputs.added_modified }}'
+          echo 'steps.files.outputs.added_modified_renamed=${{ steps.files.outputs.added_modified_renamed }}'
