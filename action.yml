@@ -39,6 +39,9 @@ outputs:
   added_modified:
     description: >
       Array of all added and modified files.
+  added_modified_renamed:
+    description: >
+      Array of all added, modified, or renamed files.
   # For backwards-compatibility
   deleted:
     description: >
